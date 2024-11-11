@@ -6,8 +6,15 @@ class Vacancy:
     def __init__(self, title: str, url: str, salary: float, description: str) -> None:
         self.__title = title
         self.__url = url
-        self.__salary = salary if salary is not None else 0.0
+        self.__salary = self.__valid_salary(salary)
         self.__description = description
+
+    @staticmethod
+    def __valid_salary(salary):
+        if salary is not None:
+            return salary
+        else:
+            return 0.0
 
     @property
     def title(self):
